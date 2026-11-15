@@ -67,8 +67,8 @@ Review actual files and synchronize all feature statements before publication:
 
 1. Work only in the isolated Lite workspace (not the original Build 98 QA/Pro workspace).
 2. Record `git status --short`, `git branch -vv`, `git remote -v`, `git log -5 --oneline`, and compare local changes with the remote review branch before editing.
-3. Preserve all uncommitted local work and do a reversible backup/worktree before any branch switch, rebase, reset, copy, or merge.
-4. Audit and fix the real candidate, run target tests, then commit **reviewable source and documentation only** to the release-review branch, with narrowly scoped commits and clear messages.
+3. Preserve all uncommitted local work and do a reversible backup/worktree before any branch switch, rebase, reset, copy, or merge. This public GitHub repository is documentation-first and must not be treated as permission to open-source the proprietary Build 98-derived Lite code.
+4. Audit and fix the real candidate locally, run target tests, then commit **reviewed public documentation, sanitized screenshots, public example data and legal notices only** to this public release-review branch, with narrowly scoped commits and clear messages. Keep Android Kotlin/Java source, build tooling, internal test evidence and release binaries in the private/local engineering workspace unless the owner separately approves the source-code license and public IP disclosure.
 5. Never commit keystores, passwords, tokens, production certificates, private customer data, device logs exposing identifiers, unsigned or debug APKs/AABs, local SDK settings, QA/Pro restricted code, or unlicensed proprietary assets.
 6. Verify upstream branch and any remote publication step separately from local commit; **no merge to main, tag, GitHub Release, VPS deployment, Play upload or production rollout** without specific owner approval.
 7. Add a final, evidence-backed PASS/FAIL/BLOCKED review summary before requesting release approval.
