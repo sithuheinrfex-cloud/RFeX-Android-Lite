@@ -1,0 +1,4 @@
+site_id,latitude,longitude,sector_id,technology,azimuth_deg,beamwidth_deg
+DEMO-001,16.8401,96.17,A,LTE,0,65
+DEMO-001,16.8401,96.17,B,LTE,120,65
+DEMO-002,16.841,96.173,A,NR,45,70
