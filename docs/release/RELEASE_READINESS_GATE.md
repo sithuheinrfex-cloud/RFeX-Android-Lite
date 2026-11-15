@@ -43,6 +43,18 @@ Do not ship root, Magisk, Qualcomm DIAG/QMDL, AT, RRC/NAS/L3 decoders, Pycrate, 
 | Build and signatures | Fresh reproducible release AAB/APK; approved secure upload signing; package/version/dex/deps/sha256 checks | PENDING |
 | Publication | Owner approval after review; Play Console tests and policy declarations | NOT AUTHORIZED |
 
+
+## 2A. Product-specific acceptance cases (derived from prior Lite handoff; verify current shipped behavior)
+
+- **Outdoor session:** Max **5 minutes of active recording**; paused time must not count. Auto-stop must flush and save safely, and supported CSV/GPX exports must match raw timestamps/available RF metrics. Unlimited separate sessions where implemented.
+- **Indoor Walk:** Max **3 minutes of active measurement**, one user-selected PNG/JPEG floorplan per session, relative indoor point positions (not invented GPS), supported CSV export and pause semantics.
+- **Cell database CSV:** User-selected CSV import via Android Storage Access Framework; cap **100 unique site IDs** with clear subset selection; up to **3 selected sites** for real sector details where supported. Confirm the full map rendering path rather than just an import count.
+- **Public Android data:** Verified serving and available neighbors on SIM1/SIM2, accurate RAT/band/frequency/channel/PCI/TAC/RSRP/RSRQ/SINR when exposed; Android 13/14 privacy redactions and Location Master / Precise Location; no fake unavailable metrics or signaling.
+- **Field UX:** Dark/light theme, compact RF grid, professional read-only Band/Cell and Android Network Events screens, correct map/RF legends, recording UI with no oversized buttons, safe navigation after cancellation, battery/thermal/storage handling.
+- **Ads and analytics (only if actually packaged):** Inventory AdMob/UMP/Advertising ID, SDK data flow and consent; use test ads in QA; never interrupt recording, maps interaction, indoor, file import/export, or speed test. If live IDs/consent are missing, disable production ads and document the result instead of inventing configuration.
+- **Permission/FGS audit:** Check actual Android 13–16 permission prompts, foreground service type and notifications for user-initiated recordings, background data/location restrictions, and Play declarations required for shipped FGS types.
+- **Public GitHub safety:** Test `git diff --cached --name-only` before commit and a secrets/PII scan. Never publish customer sites, operator test data, real UE traces, IMEI/IMSI, RF measurement captures containing location, proprietary source, signing keys or private logs.
+
 ## 3. Required third-party compliance actions
 
 - **RFeX product license:** Determine the owner-selected license for first-party code. An MIT dependency does *not* force the overall RFeX codebase to be MIT or open source. Never silently add a root LICENSE granting public reuse.
