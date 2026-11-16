@@ -72,15 +72,19 @@ The following components have been removed from the compiled Lite APK/AAB and re
 - **Approved Lite Limits:** 5 active minutes for outdoor recording, 3 active minutes for indoor walk, 100-site and 3-sector preview limit for cell database import.
 - **Speed Test & Manual Tools:** Integrated OpenSpeedTest Public widget; Cloudflare Speedtest discarded. Safe user-initiated TCP latency socket check (1.1.1.1:443), manual call launcher (`ACTION_DIAL`), and manual SMS composer (`ACTION_SENDTO`).
 
-### 4. Street-Map and Basemap Resolution
-- **Root Cause Verified:** Local router DNS gateway (`192.168.100.1`) returns `127.0.0.1` and `::1` for `tile.openstreetmap.org`, causing connection refused errors on the current development network.
-- **Build 98 Resolution Restored:** Build 98's `GoogleHybridTileSource` (`mt0.google.com`) and `CartoDarkTileSource` (`a.basemaps.cartocdn.com`) resolve and download cleanly via public CDN (HTTP 200 OK). Satellite imagery and street detail render reliably on device with proper attribution (`Imagery (c) Google`).
+### 4. Street-Map, Basemap & GPS Location Resolution
+- **OpenStreetMap Removal:** Local router DNS sinkhole gateway (`192.168.100.1`) routes `tile.openstreetmap.org` to loopback (`127.0.0.1` / `::1`). Per release instruction, OpenStreetMap has been removed from Lite v1.0.0's basemap options so it is never presented as a broken/blocked tile provider. Carto Dark (which displayed an API key watermark) was replaced with Google Street Map.
+- **Verified Working Basemaps:** Default basemap is set to **Google Satellite / Hybrid** (`mt0.google.com/vt/lyrs=y`, high-resolution satellite imagery + road labels), with **Google Street Map** (`mt0.google.com/vt/lyrs=m`, clean road detail), **Google Terrain / Relief** (`mt0.google.com/vt/lyrs=p`), and **NASA Blue Marble** available. Both Satellite Hybrid and Street Map have been tested and verified live on Xiaomi 13 Pro with HTTP 200 OK.
+- **GPS Location & RF Breadcrumb Fix:**
+  - **Root Cause:** `TelephonyMonitor.kt` only registered for `LocationManager.GPS_PROVIDER`, ignored initial location seeding via `getLastKnownLocation`, and discarded any non-GPS provider callbacks. When tested indoors on Xiaomi 13 Pro, GNSS satellite reception was shielded, resulting in `0.0, 0.0` coordinates and the suppression of the live location puck and RF points.
+  - **Resolution:** Registered Android `FUSED_PROVIDER` (Android 12+), `NETWORK_PROVIDER`, and `GPS_PROVIDER`; seeded immediately with the freshest `getLastKnownLocation`; and removed provider-specific filtering in `updateLocationState`.
+  - **Live Verification on Xiaomi 13 Pro:** Live location puck (vibrant blue core, white ring, glowing cyan halo, accuracy radius circle, and directional heading cone) and live RF measurement points (`LTE RSRP: -89.0 dBm (Very Good)`) immediately display on the map window. Outdoor recording session (45 verified samples / 44 seconds) successfully logged and saved to CSV.
 
 ### 5. Final Verified Release Artifacts
 - **Final Release AAB:** `RFeX_Drive_Lite_v1.0.0_1_Antigravity-Build98-Verified_unsigned-review.aab`
-  - **SHA-256:** `115A5302F301DF492FF92E99065419F9241FBEC29070D17FDE79E8497C37E5EB`
+  - **SHA-256:** `CE4E0663A11A71ED5B538F7C505599921174EE34C9BACA05AEE2FE738410B55F`
 - **Final Release APK:** `RFeX_Drive_Lite_v1.0.0_1_Antigravity-Build98-Verified_unsigned-review.apk`
-  - **SHA-256:** `3F46F801273FA11F76394CD698580253B12F33B98820BA392CCCD7610B878C37`
+  - **SHA-256:** `3FADEFD1238030DFCFA491F8881C4EB60246BDC14B0978040B29D766F44FA860`
 
 ### 6. Release Gate Status
 - **Build 98 Foundation & UI Fidelity:** PASS
@@ -90,6 +94,6 @@ The following components have been removed from the compiled Lite APK/AAB and re
 - **Bundletool Validation:** PASS
 - **Physical Device Live Telemetry & Speed Test (Xiaomi 13 Pro):** PASS
 - **Cloudflare Speedtest Blocker:** **DISCARDED / RESOLVED** (Removed completely per user instruction; OpenSpeedTest Public fully operational)
-- **Online Basemap (Google Satellite Hybrid / Carto Dark):** PASS
-- **Online Basemap (OpenStreetMap Street):** BLOCKED (Environment DNS sinkhole at local gateway)
+- **Online Basemaps (Google Satellite Hybrid & Google Streets):** PASS (OSM removed; verified live on Xiaomi 13 Pro)
+- **Live GPS Puck & RF Point Rendering:** PASS (Fused/Network/GPS providers verified live on Xiaomi 13 Pro)
 - **Google Play Upload Signing:** BLOCKED (Awaiting production upload keystore)
