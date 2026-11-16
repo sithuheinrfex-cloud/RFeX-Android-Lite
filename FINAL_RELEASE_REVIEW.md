@@ -1,28 +1,33 @@
 # Antigravity Final Physical Device Review & Release Status
 **App:** RFeX Drive Lite v1.0.0
-**Target Device:** Xiaomi 13 Pro (2210132C) - Android 14 (HyperOS 1.0.10.0.UMBCNXM)
+**Target Device:** Xiaomi 13 Pro (2210132G) - Android 14 (HyperOS 1.0.10.0.UMBCNXM)
 
 ---
 
 ## Executive Summary
-This document summarizes the comprehensive verification of **RFeX Drive Lite v1.0.0** (Package: `com.rfex.drive.lite`) built and verified against the authoritative **Build 98 QA FULL** baseline (`com.rfex.drive.telecom.qa`).
+This document records the comprehensive verification of **RFeX Drive Lite v1.0.0** (Package: `com.rfex.drive.lite`, Version Code: 1) built from the authoritative **Build 98 QA FULL** baseline (`com.rfex.drive.telecom.qa`) and tested live on a physical **Xiaomi 13 Pro (2210132G)**.
 
 All privileged engineering engines (Qualcomm MDM-DIAG binary logging, root/su execution, modem AT command drivers, PCTEL scanner interfaces, automated SCFT loop scripts, SSV report generators, and staging cloud credentials) have been completely excluded from the compiled release application.
 
-All 31 unit tests pass (`testReleaseUnitTest`), Google `bundletool` validation exits 0, and the multi-source basemap engine has been restored to Build 98's working CartoDB Dark Matter and Google Hybrid providers.
+Per user instruction, Cloudflare Speedtest has been completely **discarded** (removed from compiled source and bundle assets). The speed test suite is now dedicated entirely to **OpenSpeedTest Public**, which was executed live on the Xiaomi 13 Pro, achieving **412.38 Mbps Download, 48.64 Mbps Upload, 54.5 ms Ping (0.30 ms Jitter)**.
+
+All 31 unit tests pass (`testReleaseUnitTest`), Google `bundletool` validation exits 0, and the multi-source basemap engine displays live **Google Satellite Hybrid** and **CartoDB Dark Matter** tiles.
 
 ---
 
 ## Physical Device Verification Artifacts (Xiaomi 13 Pro)
-Stored under `PRIVATE_EVIDENCE/Antigravity-Device-Evidence/`:
-1. `1-dashboard.png` (SHA-256: 3F432FD340CC0E7BA94236E08B3E034BD3EEEC0C3D62D50E5513D4166CC29221): Professional RF Dashboard, Dual-SIM engineering grid, RSRP/RSRQ/SINR charts, 5-min recording controls.
-2. `2-help-center.png` (SHA-256: 9D5455BE87ED1142F62E8F9EE637F77F36860DDA1AA92F8DAEE8BD251A6EE91D): Field diagnostic manual, search filter, single-line tabs, third-party attribution.
-3. `3-map-screen.png` (SHA-256: A8320ED85E7E21A1DE6B202C32B2FDCB127BF989C31B66E745B2EC5B20D1D9D4): 'No RF points recorded yet.' and 'No cell database loaded.' empty states; indoor/GNSS coordinate fallback rendering.
-4. `4-speed-connectivity.png` (SHA-256: 58206AA3412E61F60AEF31E3EB64EF0AD2F03D87BBA8EC2DEA44F1AF06C2D961): TCP Socket Latency Check (1.1.1.1:443), Manual Call (ACTION_DIAL), Manual SMS (ACTION_SENDTO), Cloudflare/OpenSpeedTest engines.
-5. `5-band-cell-preview.png` (SHA-256: 9106DFBADC6D261BEBCBEF1E29BF27B8B30592ADB81BE21F706AFD70CFF15FB0): 3GPP RAT selection (LTE, NR, WCDMA, GSM) marked 'Advanced Pro — Preview Only'; lock controls strictly disabled.
-6. `6-network-events.png` (SHA-256: 97D589AE0C3FAB7DDD1AE823B38C1C48133DA5E1026267881C5D229044D9F5EE): Android SDK event stream and disabled L3 signaling previews without synthetic messages.
-7. `7-indoor-walk.png` (SHA-256: 443D5F40F5ACC993F59C6CC8CCB3095A69E11BA9F8CCA21BA42EB2C422FF8A27): Floorplan canvas, Pin Live RF and Undo controls with actual Android telemetry.
-8. `8-settings.png` (SHA-256: 765670172920A564BE8AE988B2905D4CFB3D901F837D65321E0AC356F5E18003): Professional preferences, display freeze toggle, logging and diagnostics.
+Captured live on Xiaomi 13 Pro and stored under `Release-Candidate/RFeX_Drive_Lite_v1.0.0/`:
+1. `evidence-build98-dashboard.png`: Live Viettel LTE Band 1 serving cell + 2 neighbors, EARFCN 250 (2135.000 MHz DL / 1945.000 MHz UL), PCI 485, TAC 25162, ECI 128011273, RSRP -93 dBm, RSRQ -9 dB, CA status, Dual SIM bar, Freeze toggle, and recording controls.
+2. `evidence-build98-speedtest.png` & `evidence-build98-speedtest-disclosure-real.png`: OpenSpeedTest Public dedicated UI (Cloudflare completely discarded), transparent privacy disclosure modal.
+3. `evidence-build98-speedtest-widget.png`, `evidence-build98-speedtest-running.png`, `evidence-build98-speedtest-finished.png`: Live OpenSpeedTest executed on Xiaomi 13 Pro reaching **412.38 Mbps Download, 48.64 Mbps Upload, 54.5 ms Ping (0.30 ms Jitter)** (authenticated result: `openspeedtest.com/results/82591924` on FPT Telecom).
+4. `evidence-build98-connectivity-verified.png` & `evidence-build98-tcp-probes.png`: Manual connectivity suite with 10 completed TCP connect probes to public DNS `1.1.1.1:443` (51.8 ms to 80.6 ms, Status: Complete), Manual Call (`ACTION_DIAL`), and Manual SMS (`ACTION_SENDTO`).
+5. `evidence-build98-events.png`: Network Events & Signaling with authentic Android Telephony HAL events stream (e.g. `Serving cell observation changed: B1 · PCI 485 · EARFCN 250 · RSRP -92.0 dBm`), with disabled L3/DIAG previews clearly labeled `Advanced Pro — Preview Only`.
+6. `evidence-build98-bandcell.png`: Multi-RAT Band/Cell engineering grid with LTE B1 telemetry (2135.000 MHz DL / 1945.000 MHz UL), with non-operational RAT Lock / NR Band Lock / LTE Band Lock labeled `Advanced Pro — Preview Only`.
+7. `evidence-build98-map.png` & `evidence-build98-layer-dialog.png`: Live map rendering with online Google Satellite Hybrid (`mt0.google.com`) and CartoDB Dark Matter, live RF measurement overlays, and KPI color legends.
+8. `evidence-build98-indoor.png`: Indoor Walk floorplan survey canvas with 3-minute Lite session limit (`0 / 180 active seconds`), Pin live RF, Undo pin, and CSV export.
+9. `evidence-build98-help.png`: RFeX Help & Knowledge Center with offline field engineering manual, category tabs, and third-party notices.
+10. `evidence-build98-settings-real6.png`: Field Display & Preferences dialog with typography scaling (1.0x vs 1.25x), display freeze toggle, neighbor cell sorting/filtering, and unit system.
+11. `evidence-build98-settings-dialog-opened.png`: Saved Sessions Manager with stored sessions honoring the 5-minute Lite session limit.
 
 ---
 
@@ -38,7 +43,7 @@ Stored under `PRIVATE_EVIDENCE/Antigravity-Device-Evidence/`:
 
 ### 1. Build 98 Reused Foundation
 - **Professional RF Dashboard (`DashboardScreen.kt`, 3,218 lines):** Reused Build 98's complete engineering interface with RF Grid, dynamic Strip Charts (RSRP, RSRQ, SINR, CQI, MCS), Technical Parameters table, serving cell cards, multi-cell neighbor grid, dual-SIM controls, display freeze, and field font scaling. Excluded enterprise automated drive testing (`MPT_AUDIT`).
-- **Map & Basemap Rendering Engine:** Restored Build 98's multi-source online basemap infrastructure including CartoDB Dark Matter (`CartoDarkTileSource`), Google Satellite Hybrid (`GoogleHybridTileSource`), Google Terrain (`GoogleTerrainTileSource`), and OpenStreetMap (`OSM_STREET`). Hardware-accelerated `DriveTestTrackOverlay.kt` renders breadcrumbs, continuous route polylines, live GPS puck, and serving/neighbor spider lines with coordinate fallbacks.
+- **Map & Basemap Rendering Engine:** Restored Build 98's multi-source online basemap infrastructure including Google Satellite Hybrid (`GoogleHybridTileSource`), CartoDB Dark Matter (`CartoDarkTileSource`), Google Terrain (`GoogleTerrainTileSource`), and OpenStreetMap (`OSM_STREET`). Hardware-accelerated `DriveTestTrackOverlay.kt` renders breadcrumbs, continuous route polylines, live GPS puck, and serving/neighbor spider lines with coordinate fallbacks.
 - **Streaming Cell-File Database Engine (`CellFileManager.kt`):** SAX event-driven streaming parser for KML/KMZ/CSV files with spatial bounding prefiltering, sector wedge rendering, and physical site tower circles.
 - **Indoor Walk Canvas (`IndoorWalkScreen.kt`):** Proportional PNG/JPEG floorplan scaling, tap-to-place pin with live RF measurement binding, numbered route tracks, and explicit "Pin Live RF" and "Undo Pin" controls.
 - **Multi-RAT Band/Cell Presentation (`LockBandScreen.kt` / `RadioReadOnlyScreens.kt`):** Reused Build 98's professional 5G NR, 4G LTE, 3G WCDMA, and 2G GSM band selection grids, EARFCN/NR-ARFCN channel indicators, and PCI scrambling tables. All locking mechanisms are strictly disabled and labeled `Advanced Pro — Preview Only`.
@@ -65,29 +70,26 @@ The following components have been removed from the compiled Lite APK/AAB and re
 - **First-Launch Location Flow:** Transparent explanation dialog describing the necessity of Precise Location for serving/neighbor cell queries, GNSS tracking, and RF mapping, with non-punitive limited mode fallback.
 - **3GPP Frequency Calculation Accuracy:** Standardized channel mathematics in `RatChannels.kt` (LTE EARFCN 250 -> Band 1 2135.0 MHz; EARFCN 1700 -> Band 3 1855.0 MHz; Timing Advance availability labels).
 - **Approved Lite Limits:** 5 active minutes for outdoor recording, 3 active minutes for indoor walk, 100-site and 3-sector preview limit for cell database import.
-- **Speed Test & Manual Tools:** Integrated Cloudflare Speedtest and OpenSpeedTest Public widget; LibreSpeed excluded. Safe user-initiated TCP latency socket check (1.1.1.1:443), manual call launcher (`ACTION_DIAL`), and manual SMS composer (`ACTION_SENDTO`).
+- **Speed Test & Manual Tools:** Integrated OpenSpeedTest Public widget; Cloudflare Speedtest discarded. Safe user-initiated TCP latency socket check (1.1.1.1:443), manual call launcher (`ACTION_DIAL`), and manual SMS composer (`ACTION_SENDTO`).
 
 ### 4. Street-Map and Basemap Resolution
 - **Root Cause Verified:** Local router DNS gateway (`192.168.100.1`) returns `127.0.0.1` and `::1` for `tile.openstreetmap.org`, causing connection refused errors on the current development network.
-- **Build 98 Resolution Restored:** Build 98's `CartoDarkTileSource` (`a.basemaps.cartocdn.com`) and `GoogleHybridTileSource` (`mt0.google.com`) resolve and download cleanly via public CDN (HTTP 200 OK). Both street detail and satellite imagery render reliably with proper attribution (`(c) OpenStreetMap contributors - (c) CARTO - Google Imagery`).
+- **Build 98 Resolution Restored:** Build 98's `GoogleHybridTileSource` (`mt0.google.com`) and `CartoDarkTileSource` (`a.basemaps.cartocdn.com`) resolve and download cleanly via public CDN (HTTP 200 OK). Satellite imagery and street detail render reliably on device with proper attribution (`Imagery (c) Google`).
 
-### 5. Cloudflare MIT Licensing & Service Terms Status
-- **Software License:** Confirmed `@cloudflare/speedtest` is officially licensed under the permissive MIT license (`assets/cloudflare/LICENSE`), which permits commercial redistribution and reuse with attribution.
-- **Hosted Endpoint Usage:** Separate from software licensing, Cloudflare-hosted measurement targets remain gated for user-initiated manual testing (audience ~100-200 users). OpenSpeedTest Public widget serves as the permitted secondary engine.
+### 5. Final Verified Release Artifacts
+- **Final Release AAB:** `RFeX_Drive_Lite_v1.0.0_1_Antigravity-Build98-Verified_unsigned-review.aab`
+  - **SHA-256:** `115A5302F301DF492FF92E99065419F9241FBEC29070D17FDE79E8497C37E5EB`
+- **Final Release APK:** `RFeX_Drive_Lite_v1.0.0_1_Antigravity-Build98-Verified_unsigned-review.apk`
+  - **SHA-256:** `3F46F801273FA11F76394CD698580253B12F33B98820BA392CCCD7610B878C37`
 
-### 6. Final Rebuild Release Artifacts
-- **Final Release AAB:** `RFeX_Drive_Lite_v1.0.0_1_Antigravity-Build98-Rebuild_unsigned-review.aab`
-  - **SHA-256:** `3E132A16BB8537C21B7931795EC77BC98957465D6A2E683E5ADD526A4440C7E5`
-- **Final Release APK:** `RFeX_Drive_Lite_v1.0.0_1_Antigravity-Build98-Rebuild_unsigned-review.apk`
-  - **SHA-256:** `8A7D49A39EF2F32817FF2C1D963DBDD9F2D057148D4B50D48CB0EF23AAA85ED0`
-
-### 7. Release Gate Status
+### 6. Release Gate Status
 - **Build 98 Foundation & UI Fidelity:** PASS
 - **Privileged Backend Exclusion:** PASS
 - **3GPP RF Telemetry Accuracy:** PASS
 - **Unit Test Suite (31 JVM tests):** PASS
 - **Bundletool Validation:** PASS
-- **Online Basemap (Carto Dark / Google Hybrid):** PASS
+- **Physical Device Live Telemetry & Speed Test (Xiaomi 13 Pro):** PASS
+- **Cloudflare Speedtest Blocker:** **DISCARDED / RESOLVED** (Removed completely per user instruction; OpenSpeedTest Public fully operational)
+- **Online Basemap (Google Satellite Hybrid / Carto Dark):** PASS
 - **Online Basemap (OpenStreetMap Street):** BLOCKED (Environment DNS sinkhole at local gateway)
-- **Cloudflare Hosted Speedtest Production Clearance:** BLOCKED (Pending commercial API agreement)
 - **Google Play Upload Signing:** BLOCKED (Awaiting production upload keystore)
