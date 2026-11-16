@@ -1,11 +1,19 @@
+RFeX Drive Lite third-party notices
 
+Map data and tiles:
+- Map tiles by CARTO, licensed under CC BY 4.0: https://carto.com/attributions
+- OpenStreetMap data © OpenStreetMap contributors, licensed under ODbL 1.0: https://www.openstreetmap.org/copyright
+- Satellite overview imagery: NASA Blue Marble, provided through NASA EOSDIS Global Imagery Browse Services (GIBS): https://gibs.earthdata.nasa.gov/
 
-RFeX Drive Lite third-party notices 
-OpenStreetMap data © OpenStreetMap contributors. ODbL 1.0. https://www.openstreetmap.org/copyright 
-Map renderer: osmdroid (Apache-2.0), https://github.com/osmdroid/osmdroid 
-AndroidX, Kotlin and coroutines: see component POMs and accompanying license texts. 
-Google Mobile Ads SDK and UMP: Android SDK and Google service terms; https://developers.google.com/admob/terms 
-License and NOTICE documents present in resolved library archives: 
+Map renderer:
+- osmdroid (Apache-2.0), https://github.com/osmdroid/osmdroid
+
+Android and runtime libraries:
+- AndroidX, Jetpack Compose, Kotlin and coroutines: see component POMs and accompanying license texts below.
+- OkHttp 4.12.0 (Apache-2.0, with Public Suffix List under Mozilla Public License 2.0): https://square.github.io/okhttp/
+- Google Mobile Ads SDK and User Messaging Platform (UMP): Android SDK and Google service terms; https://developers.google.com/admob/terms
+
+License and NOTICE documents present in resolved library archives:
 androidx.webkit:webkit:1.12.1 (META-INF/androidx/webkit/webkit/LICENSE.txt)
 
 Apache License
@@ -223,6 +231,6 @@ https://openspeedtest.com
 https://openspeedtest.com/selfhosted-speedtest#Embed-SpeedTest
 https://openspeedtest.com/privacy-policy
 
-Cloudflare Speedtest uses @cloudflare/speedtest 1.17.0, licensed under MIT. See assets/cloudflare/LICENSE.
-https://github.com/cloudflare/speedtest
-https://speed.cloudflare.com/
+Satellite overview imagery: NASA Blue Marble, provided through NASA EOSDIS Global Imagery Browse Services (GIBS).
+https://gibs.earthdata.nasa.gov/
+https://www.nasa.gov/nasa-brand-center/images-and-media/
