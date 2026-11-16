@@ -1,7 +1,6 @@
 RFeX Drive Lite third-party notices
 
 Map data and tiles:
-- Map tiles by CARTO, licensed under CC BY 4.0: https://carto.com/attributions
 - OpenStreetMap data © OpenStreetMap contributors, licensed under ODbL 1.0: https://www.openstreetmap.org/copyright
 - Satellite overview imagery: NASA Blue Marble, provided through NASA EOSDIS Global Imagery Browse Services (GIBS): https://gibs.earthdata.nasa.gov/
 
