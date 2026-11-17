@@ -2,7 +2,9 @@ RFeX Drive Lite third-party notices
 
 Map data and tiles:
 - OpenStreetMap data © OpenStreetMap contributors, licensed under ODbL 1.0: https://www.openstreetmap.org/copyright
-- Satellite overview imagery: NASA Blue Marble, provided through NASA EOSDIS Global Imagery Browse Services (GIBS): https://gibs.earthdata.nasa.gov/
+- OpenStreetMap Humanitarian tiles © OpenStreetMap France, licensed under CC BY-SA 2.0: https://www.openstreetmap.fr/
+- World Imagery satellite tiles © Esri, Maxar, Earthstar Geographics, USDA, USGS, AeroGrid, IGN, IGP, and the GIS User Community: https://www.esri.com/legal/terms/fair-use
+- OpenTopoMap tiles © OpenTopoMap (CC-BY-SA), elevation data SRTM: https://opentopomap.org/
 
 Map renderer:
 - osmdroid (Apache-2.0), https://github.com/osmdroid/osmdroid
@@ -230,6 +232,8 @@ https://openspeedtest.com
 https://openspeedtest.com/selfhosted-speedtest#Embed-SpeedTest
 https://openspeedtest.com/privacy-policy
 
-Satellite overview imagery: NASA Blue Marble, provided through NASA EOSDIS Global Imagery Browse Services (GIBS).
-https://gibs.earthdata.nasa.gov/
-https://www.nasa.gov/nasa-brand-center/images-and-media/
+Satellite and terrain imagery:
+World Imagery: Esri, Maxar, Earthstar Geographics, and the GIS User Community.
+https://www.esri.com/legal/terms/fair-use
+OpenTopoMap: Map data © OpenStreetMap contributors, SRTM; Map style © OpenTopoMap (CC-BY-SA).
+https://opentopomap.org/

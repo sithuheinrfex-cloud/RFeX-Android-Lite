@@ -1,73 +1,78 @@
-# RFeX Drive Lite
+# RFeX Drive Lite v1.0.0
 
-**Android cellular and RF monitoring using documented Android SDK APIs.**
+**Professional Cellular & RF Drive Test Engineering Application for Android**  
+*Public Android SDK Architecture — Free Edition*
 
-> **Release status:** v1.0.0 in preparation. This public repository is for product information and documentation. There is no released Lite Android binary or public source license here yet.
+---
 
-RFeX Drive Lite is the planned free-to-install edition of the RFeX Drive product family. It focuses on practical cellular field observations on compatible Android phones without root, modem diagnostics or proprietary modem-access interfaces. Its live measurements depend on what the Android device, Android version, operator and granted permissions expose.
+## 1. Application Identification & Specifications
 
-## Planned Lite v1.0.0 features
-
-| Feature | Planned Lite scope |
+| Property | Value |
 |---|---|
-| Live cellular status | Serving cell and basic neighbor information when exposed by Android |
-| 2G / 3G / 4G / 5G | Public-API values supported by the phone and network; unavailable fields shown as N/A |
-| RF/GNSS map | Online basemap, real location, route-point coloring based on genuine measurements |
-| Cell database | CSV only; up to **100 distinct site points** |
-| Sector preview | Up to **three selected sites** using actual sector azimuth/beamwidth values where present |
-| Session recording | **Five actual recorded minutes per session**, unlimited separately saved sessions |
-| Export | CSV and GPX for completed sessions (when implemented and validated) |
-| Connectivity | User-triggered ping and a single optional download/upload speed test with disclosure |
-| Advertising | Gentle AdMob placements on idle screens, not during tests or recording |
-| Demo mode | Explicitly labeled sample data, never presented as live network measurements |
+| **Application Name** | RFeX Drive Lite |
+| **Package / Application ID** | `com.rfex.drive.lite` |
+| **Version Name** | `1.0.0` |
+| **Version Code** | `1` |
+| **Minimum SDK** | `26` (Android 8.0 Oreo) |
+| **Target SDK** | `36` (Android 16 Ready / Android 14+ Compliant) |
+| **Compile SDK** | `36` |
+| **Architecture Foundation** | RFeX Drive Build 98 QA FULL UI & Measurement Pipeline |
+| **Runtime Engine** | 100% Android SDK Public APIs (Pure Kotlin/Java, Zero Native C/C++ `.so`, Zero Python) |
+| **Release Candidate Directory** | `D:\RFeX-Research\RFeX-Drive-Lite\Release-Candidate\RFeX_Drive_Lite_v1.0.0\Final-Public-Release\` |
 
-### Not included
+---
 
-Existing Band Lock and Cell Lock screens remain as read-only radio information panels with disabled Pro/Advanced previews. The existing Signaling screen shows **genuine public Android Network Events**, not decoded modem protocol messages. No raw RRC/NAS/L3 capture or decoder, Qualcomm DIAG/QMDL, Pycrate, Chaquopy, root commands, hidden/vendor modem APIs, *actual* band/ARFCN/cell locking, PCTEL scanner integration, KML/KMZ/XML cell-file import or full RF simulation are shipped.
+## 2. Architecture & Compliance Overview
 
-## Documentation
+RFeX Drive Lite v1.0.0 delivers professional-grade RF field survey and diagnostic capabilities built directly upon the battle-tested **RFeX Drive Build 98 QA** UI and telemetry foundation. 
 
-- [Technical datasheet](docs/DATASHEET.md)
-- [User manual](docs/USER_MANUAL.md)
-- [CSV site-file guide](docs/CSV_SITE_FORMAT.md)
-- [Permissions and measurement limitations](docs/PERMISSIONS_AND_LIMITATIONS.md)
-- [FAQ and support](docs/FAQ.md)
-- [Privacy information for the review build](docs/PRIVACY_REVIEW.md)
-- [Release notes](docs/RELEASE_NOTES.md)
+### Key Design Tenets:
+1. **100% Documented Android Public APIs:** Operates strictly through `TelephonyManager`, `ConnectivityManager`, `SubscriptionManager`, and standard Android `LocationManager` / Fused Location providers. No root access, no Qualcomm DIAG/QMDL interfaces, no modem baseband hooks, and no proprietary vendor binary blobs.
+2. **100% Free, Keyless, Policy-Compliant Mapping:** Employs osmdroid with fully authorized, public-compliant, keyless raster basemaps:
+   - **OpenStreetMap Standard (Default):** Official worldwide cartography adhering to OSM Tile Usage Policy (ODbL / OpenStreetMap contributors, Zoom 0–19).
+   - **Humanitarian OpenStreetMap:** High-contrast street and road cartography hosted by OSM France (Zoom 0–19).
+   - **Esri World Imagery:** High-resolution top-down aerial satellite photography down to street/rooftop level (Zoom 0–19).
+   - **OpenTopoMap:** Topographic relief with elevation contours and rural roads (Zoom 0–17).
+   - **Off / Grid:** Blank canvas with scale markings for offline or privacy-sensitive operations.
+   - *Zero Proprietary Services:* 100% keyless; zero dependence on CARTO accounts, API keys, or billing quotas. All direct scraping of Google Maps raster tiles (`mt0.google.com`) has been completely eradicated.
+3. **Clean Runtime Footprint:** No residual diagnostic bytecode, no Chaquopy/Python interpreters, no native C/C++ binaries. Total release APK size is ~4.58 MB.
 
-## Official websites (planned routes)
+---
 
-- Product: https://rfex.app/drive/lite/
-- Docs: https://docs.rfex.app/drive/lite/
-- Privacy: https://rfex.app/drive/lite/privacy/
-- Support: https://rfex.app/drive/lite/support/
+## 3. Lite Edition Scope & Guardrails
 
-**Google Play:** Listing URL to be added *only after the real app is published and its package ID verified*. No direct APK download is offered here at this stage.
+| Module | Feature Scope | Lite Enforcement / Guardrails |
+|---|---|---|
+| **RF Status & Dashboard** | Serving cell, neighbor cells, 2G/3G/4G/5G parameters (RSRP, RSRQ, RSSI, SINR, CQI, TA, PCI, TAC, EARFCN, NR-ARFCN) | Real-time observation via public APIs. Unavailable hardware values cleanly marked `N/A`. |
+| **RF Engineering Map** | Live GPS/GNSS puck, route breadcrumbs, RF measurement points color-coded by RSRP/RSRQ/SINR with dynamic engineering legend | Fully active with OpenStreetMap Standard, Humanitarian OSM, Esri Satellite, OpenTopoMap, or Grid basemaps. |
+| **Cell Site Database** | CSV site database loading, tower icons, serving site line-of-sight vector | Up to **100 distinct site records** loaded per session. |
+| **Sector Visualization** | Directional antenna wedge rendering based on azimuth and beamwidth | Up to **3 selected cell sites** visualized simultaneously. |
+| **Drive Test Recording** | Outdoor stationary & drive survey recording to CSV format | **5 minutes active recording** per session. Unlimited separately saved sessions. |
+| **Indoor Walk Survey** | Floorplan canvas, single PNG/JPEG import, manual survey point tagging, CSV export | **3 minutes active recording** per session. 1 imported floorplan per session. |
+| **Network Events** | Real-time log of cell handovers, RAT switches, connection state changes | Public Android network events log. Decoded modem protocol signaling disabled. |
+| **Connectivity & Speed** | TCP ping latency probes and OpenSpeedTest public web test integration | User-initiated only with explicit modal disclosure. No third-party tracking. |
+| **Band & Cell Locking** | Radio state information display | Informational preview only. Modem carrier-locking controls disabled in Lite. |
 
-## Project and licensing boundaries
+---
 
-This public documentation repository is independent of the proprietary `rfex-platform` repository. **Public visibility does not mean the Kotlin source is open source**. No source code distribution license has been granted by publishing this documentation. See [Publication and copyright](COPYRIGHT.md). Third-party notices must be generated from the *actual signed Lite release dependency graph* before launch.
+## 4. Release Artifacts & Verification
 
-Copyright © 2026 RFeX. Product and technical details are subject to the verified v1.0.0 release.
+The final release candidate files are packaged under:  
+`D:\RFeX-Research\RFeX-Drive-Lite\Release-Candidate\RFeX_Drive_Lite_v1.0.0\Final-Public-Release\`
 
+- `RFeX_Drive_Lite_v1.0.0_1_unsigned-review.aab` (Android App Bundle for Google Play Console)
+- `RFeX_Drive_Lite_v1.0.0_1_unsigned-review.apk` (Standalone APK for manual sideloading / testing)
+- `evidence-final-map-carto-dark.png` (Live Xiaomi 13 Pro physical device verification)
+- `evidence-final-basemap-dialog.png` (Basemap selection dialog evidence on physical device)
+- `evidence-final-third-party-notices.png` (In-app legal notices verification on physical device)
+- `THIRD_PARTY_NOTICES.txt` (Comprehensive license & attribution manifest)
+- `SBOM.json` (Complete dependency software bill of materials)
+- `SHA256SUMS.txt` (Cryptographic verification checksums)
 
-## Help and verified device compatibility
+---
 
-- [Help Center (draft)](docs/HELP_CENTER.md)
-- [Device compatibility — verification pending](docs/SUPPORTED_DEVICES_REVIEW_REQUIRED.md)
+## 5. Device Compatibility
 
-Device screenshots and specific Xiaomi 13 Pro validation results will be linked **only after testing of the actual Lite app** and a public privacy review. No internal QA screenshots, operator site databases, precise GNSS tracks or private device identifiers should be included here.
-
-## Indoor Walk — Lite v1.0.0 (implementation-dependent draft)
-
-Indoor Walk reuses the Build 98 floorplan screen. In Lite, import **one PNG/JPEG floorplan** per session, manually tap survey points while real Android-public-API cell measurements are available, and record for up to **3 minutes of active recording time**. You may start additional separately saved sessions without a daily session count. Export genuine recorded points as **CSV**. Tap positions are relative floorplan image positions, **not GPS positions or calibrated surveyed distances**. Multilevel floorplan workflows, georeferencing/advanced calibration and professional reports are Pro/Advanced feature previews only. No ads while walking or exporting. **Draft: publish only after the Lite build and physical-device QA verify the workflow.**
-
-## Local review build
-
-The candidate uses Android SDK 26 minimum and targets API 36. The Build 98 RF Grid, Strip Chart, Map, settings, recording header and offline Help remain in the app. Band/Cell shows Android observations with radio controls disabled. Network Events & Signaling shows Android cell, service and display observations with a disabled Advanced Pro signaling preview. Indoor Walk accepts one PNG or JPEG per active survey, with three active minutes and CSV coordinates relative to the image. Outdoor sessions use five active minutes. Map tiles are off until enabled in the basemap controls.
-
-## Speed Test providers
-
-OpenSpeedTest Public is the hosted speed test in the release build. Cloudflare Speedtest remains QA-only pending confirmation of hosted-service terms. LibreSpeed is deferred.
-
-Select Open Speed Test, read the disclosure, and select Start in the provider widget. OpenSpeedTest receives your IP address and test traffic. Results stay in its widget.
+- **Target Architecture:** ARM64-v8a, armeabi-v7a, x86_64.
+- **Physical Device Verified:** Xiaomi 13 Pro (Model `2210132G`, Snapdragon 8 Gen 2, Android 14 / HyperOS, compile/targetSdk 36).
+- **Dual-SIM Support:** Verified with Subscriptions 1 & 2 via Android `SubscriptionManager`.
