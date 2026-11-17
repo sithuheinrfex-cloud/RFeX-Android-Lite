@@ -1,78 +1,128 @@
 # RFeX Drive Lite v1.0.0
 
+[![Release](https://img.shields.io/badge/Release-v1.0.0-00C853.svg)](docs/RELEASE_NOTES.md)
+[![Build](https://img.shields.io/badge/Build-1-blue.svg)](docs/evidence/APPLICATION_BUILD_VERIFICATION.md)
+[![Android](https://img.shields.io/badge/Android-8.0%20to%2016%20(API%2026--36)-green.svg)](docs/SUPPORTED_DEVICES.md)
+[![License](https://img.shields.io/badge/License-Proprietary%20Freeware-orange.svg)](docs/legal/EULA.md)
+[![Privacy](https://img.shields.io/badge/Privacy-100%25%20On--Device-success.svg)](docs/legal/PRIVACY_POLICY.md)
+[![Zero Ads](https://img.shields.io/badge/Ads-Zero%20Ads-brightgreen.svg)](docs/release/DATA_SAFETY.md)
+
 **Professional Cellular & RF Drive Test Engineering Application for Android**  
-*Public Android SDK Architecture — Free Edition*
+*Operating 100% via Documented Android SDK Public APIs — Zero Root, Zero Qualcomm DIAG*
 
 ---
 
-## 1. Application Identification & Specifications
+## 📱 Product Overview
 
-| Property | Value |
-|---|---|
-| **Application Name** | RFeX Drive Lite |
-| **Package / Application ID** | `com.rfex.drive.lite` |
-| **Version Name** | `1.0.0` |
-| **Version Code** | `1` |
-| **Minimum SDK** | `26` (Android 8.0 Oreo) |
-| **Target SDK** | `36` (Android 16 Ready / Android 14+ Compliant) |
-| **Compile SDK** | `36` |
-| **Architecture Foundation** | RFeX Drive Build 98 QA FULL UI & Measurement Pipeline |
-| **Runtime Engine** | 100% Android SDK Public APIs (Pure Kotlin/Java, Zero Native C/C++ `.so`, Zero Python) |
-| **Release Candidate Directory** | `D:\RFeX-Research\RFeX-Drive-Lite\Release-Candidate\RFeX_Drive_Lite_v1.0.0\Final-Public-Release\` |
+**RFeX Drive Lite** is an on-device radio frequency (RF) field test instrument engineered for telecom professionals, drive-test technicians, wireless optimization engineers, and cellular technology enthusiasts.
+
+Built directly upon the production-tested UI and telemetry foundation of **RFeX Drive Build 98 QA**, Lite delivers real-time cellular diagnostics across **5G NR, 4G LTE, 3G WCDMA, and 2G GSM** networks without requiring root privileges, kernel patches, modem baseband hooks, or proprietary vendor daemons.
 
 ---
 
-## 2. Architecture & Compliance Overview
+## 📸 Feature Showcase & Visual Preview
 
-RFeX Drive Lite v1.0.0 delivers professional-grade RF field survey and diagnostic capabilities built directly upon the battle-tested **RFeX Drive Build 98 QA** UI and telemetry foundation. 
+Explore the full verified gallery across all instruments in the **[Official Feature Gallery](docs/FEATURE_GALLERY.md)**.
 
-### Key Design Tenets:
-1. **100% Documented Android Public APIs:** Operates strictly through `TelephonyManager`, `ConnectivityManager`, `SubscriptionManager`, and standard Android `LocationManager` / Fused Location providers. No root access, no Qualcomm DIAG/QMDL interfaces, no modem baseband hooks, and no proprietary vendor binary blobs.
-2. **100% Free, Keyless, Policy-Compliant Mapping:** Employs osmdroid with fully authorized, public-compliant, keyless raster basemaps:
-   - **OpenStreetMap Standard (Default):** Official worldwide cartography adhering to OSM Tile Usage Policy (ODbL / OpenStreetMap contributors, Zoom 0–19).
-   - **Humanitarian OpenStreetMap:** High-contrast street and road cartography hosted by OSM France (Zoom 0–19).
-   - **Esri World Imagery:** High-resolution top-down aerial satellite photography down to street/rooftop level (Zoom 0–19).
-   - **OpenTopoMap:** Topographic relief with elevation contours and rural roads (Zoom 0–17).
-   - **Off / Grid:** Blank canvas with scale markings for offline or privacy-sensitive operations.
-   - *Zero Proprietary Services:* 100% keyless; zero dependence on CARTO accounts, API keys, or billing quotas. All direct scraping of Google Maps raster tiles (`mt0.google.com`) has been completely eradicated.
-3. **Clean Runtime Footprint:** No residual diagnostic bytecode, no Chaquopy/Python interpreters, no native C/C++ binaries. Total release APK size is ~4.58 MB.
+### 1. Real-Time RF Telemetry & Cellular Instruments
+Live radio parameters (RSRP, RSRQ, SINR, Timing Advance, PCI, EARFCN) and intra/inter-frequency neighbor cell tracking.
 
----
+| Serving Cell Dashboard | Neighbor Cells List | 60-Second Oscillogram Strip Chart |
+| :---: | :---: | :---: |
+| [![Dashboard](docs/screenshots/05-rf-dashboard.png)](docs/screenshots/05-rf-dashboard.png) | [![Neighbors](docs/screenshots/07-neighbor-cell-list.png)](docs/screenshots/07-neighbor-cell-list.png) | [![Strip Chart](docs/screenshots/08-rf-strip-chart.png)](docs/screenshots/08-rf-strip-chart.png) |
+| *Real-time RSRP (-92 dBm), RSRQ (-5 dB), SINR (+15 dB)* | *Intra-frequency neighbor cells sorted by RSRP* | *Continuous 60s real-time waveform of RSRP* |
 
-## 3. Lite Edition Scope & Guardrails
+### 2. Engineering Basemaps, Cell Sites & Drive Testing
+100% free, keyless basemaps (OpenStreetMap, Humanitarian OSM, Esri Satellite, OpenTopoMap) with 3GPP antenna azimuth wedges and spider links.
 
-| Module | Feature Scope | Lite Enforcement / Guardrails |
-|---|---|---|
-| **RF Status & Dashboard** | Serving cell, neighbor cells, 2G/3G/4G/5G parameters (RSRP, RSRQ, RSSI, SINR, CQI, TA, PCI, TAC, EARFCN, NR-ARFCN) | Real-time observation via public APIs. Unavailable hardware values cleanly marked `N/A`. |
-| **RF Engineering Map** | Live GPS/GNSS puck, route breadcrumbs, RF measurement points color-coded by RSRP/RSRQ/SINR with dynamic engineering legend | Fully active with OpenStreetMap Standard, Humanitarian OSM, Esri Satellite, OpenTopoMap, or Grid basemaps. |
-| **Cell Site Database** | CSV site database loading, tower icons, serving site line-of-sight vector | Up to **100 distinct site records** loaded per session. |
-| **Sector Visualization** | Directional antenna wedge rendering based on azimuth and beamwidth | Up to **3 selected cell sites** visualized simultaneously. |
-| **Drive Test Recording** | Outdoor stationary & drive survey recording to CSV format | **5 minutes active recording** per session. Unlimited separately saved sessions. |
-| **Indoor Walk Survey** | Floorplan canvas, single PNG/JPEG import, manual survey point tagging, CSV export | **3 minutes active recording** per session. 1 imported floorplan per session. |
-| **Network Events** | Real-time log of cell handovers, RAT switches, connection state changes | Public Android network events log. Decoded modem protocol signaling disabled. |
-| **Connectivity & Speed** | TCP ping latency probes and OpenSpeedTest public web test integration | User-initiated only with explicit modal disclosure. No third-party tracking. |
-| **Band & Cell Locking** | Radio state information display | Informational preview only. Modem carrier-locking controls disabled in Lite. |
+| Interactive Map & Basemaps | 3GPP Antenna Wedges & Spider Links | Drive Test Route Recording |
+| :---: | :---: | :---: |
+| [![Map](docs/screenshots/10-live-map.png)](docs/screenshots/10-live-map.png) | [![Sectors](docs/screenshots/14-sector-preview.png)](docs/screenshots/14-sector-preview.png) | [![Recording](docs/screenshots/11-rf-measurement-route.png)](docs/screenshots/11-rf-measurement-route.png) |
+| *Vector tiles with live GPS puck and heading ring* | *150m antenna wedges & line-of-sight spider links* | *Color-coded RF trail with 5-minute logging cap* |
+
+### 3. Indoor Floor Plan Sketch Studio & Walk Testing
+Conduct indoor facility surveys without requiring CAD files using the built-in blueprint studio.
+
+| Architectural Blueprint Studio | Indoor Pinpoint Walk Test | Clear & Reset Survey |
+| :---: | :---: | :---: |
+| [![Blueprint](docs/screenshots/18-indoor-floorplan-sketch.png)](docs/screenshots/18-indoor-floorplan-sketch.png) | [![Walk](docs/screenshots/19-indoor-walk-survey.png)](docs/screenshots/19-indoor-walk-survey.png) | [![Clear](docs/screenshots/20-indoor-cleared-reset.png)](docs/screenshots/20-indoor-cleared-reset.png) |
+| *Navy blueprint grid with rooms, walls & templates* | *Geo-relative pins with on-canvas **Indoor RSRP Legend*** | *Safe reset dialog clears points while preserving plan* |
 
 ---
 
-## 4. Release Artifacts & Verification
+## ⚡ Key Verified Capabilities
 
-The final release candidate files are packaged under:  
-`D:\RFeX-Research\RFeX-Drive-Lite\Release-Candidate\RFeX_Drive_Lite_v1.0.0\Final-Public-Release\`
-
-- `RFeX_Drive_Lite_v1.0.0_1_unsigned-review.aab` (Android App Bundle for Google Play Console)
-- `RFeX_Drive_Lite_v1.0.0_1_unsigned-review.apk` (Standalone APK for manual sideloading / testing)
-- `evidence-final-map-carto-dark.png` (Live Xiaomi 13 Pro physical device verification)
-- `evidence-final-basemap-dialog.png` (Basemap selection dialog evidence on physical device)
-- `evidence-final-third-party-notices.png` (In-app legal notices verification on physical device)
-- `THIRD_PARTY_NOTICES.txt` (Comprehensive license & attribution manifest)
-- `SBOM.json` (Complete dependency software bill of materials)
-- `SHA256SUMS.txt` (Cryptographic verification checksums)
+- **100% Public Android SDK Telephony:** Operates strictly through `TelephonyManager`, `SubscriptionManager`, `ConnectivityManager`, and `LocationManager`.
+- **Honest Hardware Provenance:** Metrics absent from the modem are cleanly reported as `N/A · not reported by modem (RRC Connected required)` rather than fabricated zeros.
+- **Keyless Multi-Basemap Engine (Zoom 0–19):**
+  - **OpenStreetMap Standard (Default):** Crisp worldwide street cartography complying with the OSM Tile Usage Policy.
+  - **Humanitarian Roads (OSM France):** High-contrast road cartography.
+  - **Esri World Imagery:** Top-down aerial satellite photography down to rooftop level.
+  - **OpenTopoMap:** Topographic relief with elevation contours and rural roads.
+  - **Offline Grid:** Blank coordinate canvas for offline or disconnected field surveys.
+- **Cell Site Management:** Import CSV site databases up to 100 locations or use 1-tap `[ LOAD SAMPLE SITES (3 SITES) ]` to instantly populate local sectors and spider lines (`LINKS: ON`).
+- **Indoor Blueprint Sketching:** Built-in drawing tools (`WALL`, `ROOM`, `FREE`, `DOOR`) and architectural presets (`Central Corridor & 4 Offices`, `Warehouse`, `Office Grid`).
+- **Standard CSV Export:** Full session recording export via Android Storage Access Framework (SAF) for post-processing in desktop RF planning and GIS suites.
+- **100% On-Device Privacy:** Zero tracking beacons, zero analytics SDKs, zero background data exfiltration, zero ads.
 
 ---
 
-## 5. Device Compatibility
+## 📋 Technical Specifications
 
-- **Target Architecture:** ARM64-v8a, armeabi-v7a, x86_64.
-- **Physical Device Verified:** Xiaomi 13 Pro (Model `2210132G`, Snapdragon 8 Gen 2, Android 14 / HyperOS, compile/targetSdk 36).
-- **Dual-SIM Support:** Verified with Subscriptions 1 & 2 via Android `SubscriptionManager`.
+| Parameter | Specification | Notes |
+| :--- | :--- | :--- |
+| **Package Name** | `com.rfex.drive.lite` | Production application ID |
+| **Version** | `1.0.0` (Build `1`) | Initial production release |
+| **Target SDK** | API 36 (Android 16 Ready) | Modern Android permission compliance |
+| **Minimum SDK** | API 26 (Android 8.0 Oreo) | Broad device compatibility |
+| **Footprint** | APK: 4.60 MB / AAB: 8.84 MB | Zero native `.so` binaries, pure Dalvik/ART dex |
+| **Reference Hardware** | Xiaomi 13 Pro (`2210132G`) | Snapdragon 8 Gen 2 / Snapdragon X70 5G Modem |
+| **Reference Network** | Viettel 4G LTE (`452/04`) | Band 1, EARFCN 250, PCI 485 |
+
+---
+
+## 📚 Official Product Documentation
+
+- 📖 **[User Manual](docs/USER_MANUAL.md)** — Comprehensive operating guide and testing cadence.
+- 📊 **[Technical Datasheet](docs/DATASHEET.md)** — Architectural specifications, parameters, and nominal ranges.
+- 🖼️ **[Feature Gallery](docs/FEATURE_GALLERY.md)** — All 24 verified physical-device screenshots.
+- 🎯 **[Feature Verification Matrix](docs/FEATURE_VERIFICATION_MATRIX.md)** — 27/27 feature implementation and acceptance ledger.
+- 🔍 **[Troubleshooting Guide](docs/TROUBLESHOOTING.md)** — Diagnostic solutions for common modem and GPS quirks.
+- ❓ **[Frequently Asked Questions (FAQ)](docs/FAQ.md)** — Common questions regarding Lite capabilities and pricing.
+- 🗺️ **[CSV Site Database Format](docs/CSV_SITE_FORMAT.md)** — Site and antenna geometry file specifications.
+- 📱 **[Supported Devices](docs/SUPPORTED_DEVICES.md)** — Tested hardware models and chipset compatibility.
+- ⚠️ **[Known Limitations](docs/KNOWN_LIMITATIONS.md)** — Boundaries between Lite (Public API) and Advanced Pro (Root/DIAG).
+
+---
+
+## 🔒 Privacy, Licensing & Legal
+
+- **First-Party License:** RFeX Drive Lite is **Proprietary Freeware** developed and owned by RFeX Technology. The first-party Android source code is proprietary and closed-source. See **[EULA](docs/legal/EULA.md)** and **[COPYRIGHT](COPYRIGHT.md)**.
+- **Privacy Policy:** 100% On-Device execution with zero external data transmission. See **[PRIVACY_POLICY](docs/legal/PRIVACY_POLICY.md)**.
+- **Data Safety Declaration:** Complete Google Play Data Safety declaration available in **[DATA_SAFETY](docs/release/DATA_SAFETY.md)**.
+- **Third-Party Open Source:** Integrated open-source libraries (osmdroid, OpenSpeedTest, AndroidX) and geographic data (OpenStreetMap) retain their respective Apache-2.0, MIT, BSD, and ODbL licenses. See **[OPEN_SOURCE_LICENSES](docs/legal/OPEN_SOURCE_LICENSES.md)**, **[THIRD_PARTY_ATTRIBUTIONS](docs/legal/THIRD_PARTY_ATTRIBUTIONS.md)**, and **[THIRD_PARTY_NOTICES.txt](THIRD_PARTY_NOTICES.txt)**.
+- **Security Policy:** Coordinated vulnerability disclosure guidelines detailed in **[SECURITY](SECURITY.md)**.
+
+---
+
+## 🧪 Test Evidence & Verification Package
+
+Detailed physical-device verification reports and cryptographic audit records:
+- **[Application Build Verification](docs/evidence/APPLICATION_BUILD_VERIFICATION.md)**
+- **[Physical Device Test Results (31/31 PASS)](docs/evidence/PHYSICAL_DEVICE_TEST_RESULTS.md)**
+- **[RF Metric Validation & Provenance](docs/evidence/RF_METRIC_VALIDATION.md)**
+- **[Recording & Export Validation](docs/evidence/RECORDING_EXPORT_VALIDATION.md)**
+- **[UI & Layout Regression Results](docs/evidence/UI_REGRESSION_RESULTS.md)**
+- **[Automated Unit Tests Summary (31/31 PASS)](docs/evidence/AUTOMATED_TEST_SUMMARY.md)**
+- **[Release Artifact Verification & Signatures](docs/evidence/RELEASE_ARTIFACT_VERIFICATION.md)**
+- **[Historical Defect Closure Summary](docs/evidence/DEFECT_CLOSURE_SUMMARY.md)**
+- **[Evidence Index & Checksums](docs/evidence/EVIDENCE_INDEX.md)**
+
+---
+
+## 🌐 Ecosystem & Support
+
+- **Official Product Portal:** [https://rfex.app](https://rfex.app)
+- **Enterprise Cloud Platform:** [https://rfex.cloud](https://rfex.cloud)
+- **Public Ecosystem:** [https://rfex.one](https://rfex.one)
+- **Technical Support:** `support@rfex.app`

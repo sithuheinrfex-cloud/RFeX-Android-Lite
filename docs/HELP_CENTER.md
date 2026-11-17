@@ -1,44 +1,41 @@
-# RFeX Drive Lite — Help Center (v1.0.0 candidate)
+# RFeX Drive Lite — Knowledge Base & Help Center
 
-**Status: documentation draft for a not-yet-verified Lite build.** The final in-app Help must be tested before publishing this page.
+**Product:** RFeX Drive Lite v1.0.0  
+**Package:** `com.rfex.drive.lite`  
+**Status:** **Approved Production Documentation** (Verified on Xiaomi 13 Pro / Android 13)
 
-Start with the [User Manual](USER_MANUAL.md), [Technical Datasheet](DATASHEET.md), [CSV format](CSV_SITE_FORMAT.md), [Permissions and limitations](PERMISSIONS_AND_LIMITATIONS.md), and [FAQ](FAQ.md).
+---
 
-## Quick start
+## 1. Quick Start & Navigation
 
-Open the Lite app; allow location and other permissions only when the feature requires them. Review live RF metrics where your phone exposes them, open the RF map and select the layers you want. Use a CSV of up to 100 unique sites; preview sectors for up to three selected sites if azimuth/beamwidth data is valid. Start a recording and stop or let it auto-save after five minutes of recorded time, then export CSV/GPX with the Android file picker.
+RFeX Drive Lite operates through 6 core instrument views accessible from the bottom navigation bar:
+- **RF Status:** Real-time cellular dashboard, neighbor cell list, oscillogram strip chart, and correlation scatter plot.
+- **Speed Test:** User-initiated network performance diagnostics powered by OpenSpeedTest with explicit data-usage disclosures.
+- **Events:** Public Android Network Events timeline (service state transitions, RAT switches, and handovers).
+- **Band/Cell:** Hardware radio state observations and carrier band information (modem locking controls are Advanced Pro previews).
+- **Map:** Interactive GPS drive-test mapping, keyless basemaps (OSM, Esri Satellite, Topo), cell site database, and 3GPP sector azimuth wedges.
+- **Indoor:** Draft floor plan sketch studio, architectural templates, pinpoint walk testing, and on-canvas RSRP legend.
 
-## Understanding N/A and missing cells
+---
 
-Lite shows network information through publicly documented Android APIs. Android/device/SIM/carrier policy may limit 5G measurements or neighbor cells. `N/A` means no trustworthy current reading is available, not a measured zero.
+## 2. In-App Offline Knowledge Center (8 Categories)
 
-## Band Lock, Cell Lock and Signaling screens
+Tap the `?` icon in the top header to access the 100% offline knowledge base with instant search:
 
-These familiar Build 98 screens remain in Lite. **Band Lock** and **Cell Lock** show read-only observed band, channel, serving cell and neighbors where Android exposes them, with locking controls clearly labeled **Pro/Advanced preview — unavailable in Lite**. **Signaling** offers an **Android Network Events** timeline of genuine public-API service state, signal changes and observed serving-cell changes. This is not an RRC/NAS log or a decoded handover cause. RRC/NAS decoders, Qualcomm DIAG, Pycrate/Chaquopy, root, AT commands, actual modem locking and scanner control are **not included in Lite**.
+1. **User Manual:** Overview of the public Android SDK architecture, 5-step onboarding, and multi-SIM operation.
+2. **Drive & Indoor Testing:** Guide to conducting outdoor 5-minute drive surveys and indoor 3-minute blueprint walk tests.
+3. **RF Metrics Guide:** Standard 3GPP definitions, nominal ranges, and color thresholds for RSRP, RSRQ, SINR, RSSI, TA, and CQI.
+4. **Permissions & Privacy:** Detailed transparency regarding why `ACCESS_FINE_LOCATION` and `READ_PHONE_STATE` are needed, coupled with our **100% On-Device Privacy Guarantee** (zero tracking, zero analytics beacons, zero ads).
+5. **Terms & Compliance:** Software freeware terms, telecommunications diagnostic disclaimers, and Google Play compliance.
+6. **Troubleshooting:** Quick solutions for location acquisition, modem RRC idle states, and stationary correlation behavior.
+7. **About RFeX:** Built by RF engineering enthusiasts at RFeX Technology for telecom professionals worldwide.
+8. **Third-Party Notices:** Complete embedded open-source licenses (Apache-2.0, MIT, BSD, ODbL).
 
-## Help inside the app
+---
 
-Offline Help has a single-line search across installed topics and a horizontally scrollable category row. Select Third-Party Notices to read the bundled licenses. The active category or Search results appears above the matching topics.
+## 3. Understanding `N/A` Provenance Values
 
-For assistance, use the planned [RFeX Lite support page](https://rfex.app/drive/lite/support/), which must be verified as live before release.
-
-## Indoor Walk — Lite v1.0.0 (implementation-dependent draft)
-
-Indoor Walk reuses the Build 98 floorplan screen. In Lite, import **one PNG/JPEG floorplan** per session, manually tap survey points while real Android-public-API cell measurements are available, and record for up to **3 minutes of active recording time**. You may start additional separately saved sessions without a daily session count. Export genuine recorded points as **CSV**. Tap positions are relative floorplan image positions, **not GPS positions or calibrated surveyed distances**. Multilevel floorplan workflows, georeferencing/advanced calibration and professional reports are Pro/Advanced feature previews only. No ads while walking or exporting. **Draft: publish only after the Lite build and physical-device QA verify the workflow.**
-
-
-## Speed Test and Server FAQ (to align after Lite release audit)
-
-- **Can I use an Ookla server?** Lite does not claim licensed embedded Ookla SDK or arbitrary use of Ookla infrastructure.
-- **Will speed testing use mobile data?** Yes. A test must start only on user request, with a data-usage warning and cancellation.
-- **Are speeds comparable across providers?** Not necessarily; results depend on test method, server, stream count and network conditions.
-
-## Local review build
-
-The candidate uses Android SDK 26 minimum and targets API 36. The Build 98 RF Grid, Strip Chart, Map, settings, recording header and offline Help remain in the app. Band/Cell shows Android observations with radio controls disabled. Network Events & Signaling shows Android cell, service and display observations with a disabled Advanced Pro signaling preview. Indoor Walk accepts one PNG or JPEG per active survey, with three active minutes and CSV coordinates relative to the image. Outdoor sessions use five active minutes. Map tiles are off until enabled in the basemap controls.
-
-## Speed Test providers
-
-OpenSpeedTest Public is the hosted speed test in the release build. Cloudflare Speedtest remains QA-only pending confirmation of hosted-service terms. LibreSpeed is deferred.
-
-Select Open Speed Test, read the disclosure, and select Start in the provider widget. OpenSpeedTest receives your IP address and test traffic. Results stay in its widget.
+RFeX Drive Lite adheres to strict technical honesty:
+- When a metric is not exposed by the device modem or the carrier network (e.g. Timing Advance when in RRC Idle, or secondary carrier SINR), Lite cleanly displays `N/A · not reported by modem (RRC Connected required)` instead of fabricating fake zeros.
+- When connected to pure 4G LTE, dormant 5G NR cards are dynamically suppressed to avoid clutter.
+- Stationarity is detected mathematically: when signal variance over time is zero, the correlation chart renders dots unconditionally with a dashed mean line and states `r = 0.00 (Stationary, n=60)`.

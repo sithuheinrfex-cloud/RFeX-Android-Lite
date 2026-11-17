@@ -2,54 +2,43 @@
 
 **Version Name:** 1.0.0  
 **Version Code:** 1  
-**Package Name:** `com.rfex.drive.lite`  
+**Package ID:** `com.rfex.drive.lite`  
 **Target SDK:** 36 (Android 16 Ready / Android 14+ Compliant)  
 **Minimum SDK:** 26 (Android 8.0 Oreo)  
-**Release Date:** November 16, 2026  
-**Git Baseline Commit:** `bc09866`  
+**Release Date:** November 17, 2026  
+**Git Source Commit:** `a0b7bd6` (Branch: `review/lite-v1.0.0-build98`)
 
 ---
 
 ## Highlights
 
-RFeX Drive Lite v1.0.0 is the inaugural public release of the lightweight, privacy-focused cellular radio frequency survey and drive-testing tool. Built upon the production-tested UI foundation of RFeX Drive Build 98 QA, Lite provides cellular engineers, technicians, and enthusiasts with essential field survey capabilities using documented Android SDK public APIs.
+RFeX Drive Lite v1.0.0 is the inaugural production release of the lightweight, privacy-focused cellular radio frequency survey and drive-testing tool. Built upon the production-tested UI foundation of RFeX Drive Build 98 QA, Lite provides cellular engineers, technicians, and enthusiasts with essential field survey capabilities using documented Android SDK public APIs.
 
 ### Key Capabilities in v1.0.0
-- **Real-Time RF Status:** Instantaneous monitoring of LTE and 5G NR serving and neighbor cells, including RSRP, RSRQ, RSSI, SINR, CQI, Timing Advance, Physical Cell ID (PCI), and ARFCN.
-- **Dynamic Keyless Multi-Basemap Support (100% Free & No Accounts, Zoom 0–19):** 
-  - **OpenStreetMap Standard (Default):** Worldwide street basemap adhering to the official OSM Tile Usage Policy (ODbL, Zoom 0–19).
-  - **Humanitarian Roads (OSM France):** High-contrast road cartography optimized for route tracking (Zoom 0–19).
-  - **Satellite Imagery (Esri World Imagery):** True top-down high-resolution aerial satellite imagery down to street/rooftop level (Zoom 0–19), replacing low-resolution NASA Blue Marble.
-  - **Topographic Relief (OpenTopoMap):** Elevation contours, shading, and rural road networks (Zoom 0–17).
-  - **Off (Grid Fallback):** Minimalist engineering coordinate grid for offline field surveys.
-- **Live Survey Recording:** Record 5-minute outdoor drive-test sessions with synchronized GPS coordinates and RF metrics, exported directly to standard CSV format.
-- **Indoor Walk Survey:** Import floorplans (PNG/JPEG) and manually tag survey points with 3-minute recording sessions and CSV export.
-- **Cell Site Management:** Load up to 100 site locations via CSV, with 3-sector azimuth/beamwidth visualizers and serving site line-of-sight tracking.
-- **In-App Knowledge & Compliance:** Offline RF parameter guides, field diagnostic handbook, and transparent third-party open-source attribution notices.
+
+- **Real-Time Cellular Radio Telemetry:** Instantaneous monitoring of LTE and 5G NR serving and neighbor cells, including RSRP, RSRQ, RSSI, SINR, CQI, Timing Advance, Physical Cell ID (PCI), and ARFCN.
+- **Keyless Multi-Basemap Engine (100% Free, No Accounts, Zoom 0–19):**
+  - **OpenStreetMap Standard (Default):** Worldwide street map adhering to the official OSM Tile Usage Policy (ODbL).
+  - **Humanitarian Roads (OSM France):** High-contrast road cartography optimized for route surveys.
+  - **Satellite Imagery (Esri World Imagery):** True top-down high-resolution aerial satellite imagery down to rooftop level.
+  - **Topographic Relief (OpenTopoMap):** Elevation contours, shading, and rural road networks.
+  - **Offline Grid:** Minimalist engineering coordinate grid for offline or low-resource field surveys.
+- **Serving & Neighbor Cell Visualization:** 1-tap `[ LOAD SAMPLE SITES (3 SITES) ]` or import custom cell files via CSV (up to 100 sites) to display 3GPP antenna azimuth wedges, beamwidths, and live serving/neighbor line-of-sight spider links (`LINKS: ON`).
+- **Indoor Floor Plan Sketch Studio & Walk Testing:**
+  - On-device blueprint drafting studio with architectural templates (`Central Corridor & 4 Offices`, `Warehouse`, `Office Grid`) or freehand wall/room drawing.
+  - On-canvas **Indoor RSRP Legend** (`≥-75`, `-85`, `-95`, `<-95`).
+  - Drop live RF pinpoints, view color-coded walk test trails, undo pins, or clear survey points with confirmation dialog.
+- **Drive Test Sessions & Export:** Continuous outdoor route logging with synchronized GPS, Android SAF CSV export, and horizontal Saved Sessions Manager (`20 pts • 1.0 KB`).
+- **Offline Help & 3GPP Knowledge Base:** 8-category in-depth manual including User Manual, Drive & Indoor Testing, RF Metrics Guide, Permissions & Privacy, Terms & Compliance, Troubleshooting, About RFeX, and Third-Party Open Source Notices.
+- **100% On-Device Privacy Guarantee:** Zero tracking beacons, zero analytics SDKs, zero background data exfiltration, and zero advertising libraries.
 
 ---
 
-## Release Blocker Remediation Summary
+## Release Artifacts & SHA-256 Checksums
 
-Prior to final release candidate packaging, the following release blockers and security audits were formally resolved:
+- **Google Play Bundle:** `RFeX_Drive_Lite_v1.0.0_1_release_signed.aab`  
+  `7fb4a28c0bc3618f4705157fea691da773e2b2e9545be49ee78e456bd3d296ed`
+- **Sideload APK:** `RFeX_Drive_Lite_v1.0.0_1_release_signed.apk`  
+  `7dce308c8d4894bc39bd3c6bdb32d37bab25d5db60ad9f1c417e70ffe9325542`
 
-1. **Purged Google Tile Scraping & CARTO Hosted Services (BLOCKER-MAP-01):**
-   - Completely eradicated unauthorized `mt0.google.com` tile scraping endpoints.
-   - Removed all dependencies on CARTO API keys, accounts, quotas, and `basemaps.cartocdn.com` endpoints.
-   - Adopted policy-compliant, 100% keyless OpenStreetMap Standard as the official default basemap, with Humanitarian OSM, Esri World Imagery (Zoom 0–19), and OpenTopoMap options.
-   - Configured compliant User-Agent headers and standard HTTP disk caching without artificial header overrides.
-2. **Purged Residual DIAG Bytecode (MEDIUM-SEC-01):**
-   - Removed tracked Python `.pyc` bytecode (`rfex_diag.cpython-312.pyc`) from Git history and source trees.
-   - Updated `.gitignore` to permanently exclude Python compiled artifacts.
-3. **Reconciled Third-Party Legal Notices (HIGH-NOTICES-01):**
-   - Purged residual `@cloudflare/speedtest` and CARTO references.
-   - Preserved OpenStreetMap, NASA Blue Marble, osmdroid, OpenSpeedTest, and AndroidX attributions.
-   - Verified live in-app legal notice presentation on physical device.
-4. **Android 14/15 Permission Hardening (LOW-NOTIF-01):**
-   - Verified that `POST_NOTIFICATIONS` runtime permission is requested transparently prior to starting foreground drive-test recording services.
-   - Enforced strict user-facing disclosure prior to accessing location and connectivity services.
-
----
-
-## Verified Device Target
-- **Xiaomi 13 Pro (`2210132G`):** Fully tested and verified under Android 14 (HyperOS, Snapdragon 8 Gen 2). GPS location acquisition, live CARTO Dark basemap rendering, RF measurement trail coloring, and session recording verified end-to-end.
+*Signed with official release keystore (`rfex-release-key`) verifying v1, v2, and v3 Android signature schemes.*

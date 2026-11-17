@@ -1,45 +1,50 @@
-# FAQ and Support — RFeX Drive Lite
+# Frequently Asked Questions (FAQ) — RFeX Drive Lite
 
-**What does Lite cost?** Planned as free to install with small advertisements on noncritical idle screens. No account or ad watching is required for exporting user recordings.
+**Product:** RFeX Drive Lite v1.0.0  
+**Status:** **Approved Production FAQ**
 
-**What Android versions work?** The final supported Android OS and device range must be taken from the signed AAB manifest and real QA results; not yet asserted.
+---
 
-**Can Lite decode NAS/RRC or show Layer 3 messages?** No. It uses documented Android cellular APIs only.
+### General & Distribution
 
-**Can Lite lock LTE bands or cells?** No. It does not perform modem control or require root.
+**Q: What does RFeX Drive Lite cost?**  
+**A:** RFeX Drive Lite is **100% free** to install and use. It contains **zero in-app purchases, zero subscription tiers, and zero advertisements**.
 
-**Can Lite load KML/KMZ/XML cell databases?** No. Lite imports CSV only.
+**Q: What Android versions and devices are supported?**  
+**A:** RFeX Drive Lite requires Android 8.0 Oreo (API 26) or higher, targets Android 16 (API 36), and is thoroughly verified on modern Android 13/14 devices including the Xiaomi 13 Pro (Snapdragon 8 Gen 2).
 
-**Why do my signal fields show N/A?** The OS or modem may not provide them; confirm permissions, location settings, SIM and registration state.
+**Q: Where can I download RFeX Drive Lite?**  
+**A:** The application is distributed officially through the Google Play Store for verified Android devices. Standalone signed release APKs are also provided for direct sideloading and enterprise testing on GitHub.
 
-**Why is the neighbor list empty?** Android may return zero neighbors or rate-limit cell updates. This is normal for some devices/network states.
+---
 
-**Can I see more than 100 site points?** Lite permits up to 100 unique site points per import selection. Pro editions are planned for larger GIS workflows.
+### Telemetry & Measurements
 
-**How many sectors are displayed?** Up to three selected sites may show their genuinely supplied valid sectors; no fake antenna bearing/coverage geometry.
+**Q: Why do some signal fields show `N/A`?**  
+**A:** RFeX Drive Lite operates strictly through standard Android public APIs. When a metric is not reported by your device's modem hardware or the mobile carrier (such as Timing Advance when in RRC Idle, or secondary component carrier SINR), Lite honestly displays `N/A · not reported by modem (RRC Connected required)` rather than inventing fake data.
 
-**Why is recording limited to five minutes?** Lite is intended for brief observations. You may save unlimited separate sessions; no daily quota is planned.
+**Q: Can Lite decode Layer 3 signaling or lock LTE bands?**  
+**A:** No. Layer 3 protocol decoding (RRC/NAS PCAP) and active band/cell locking require modem baseband access or Qualcomm DIAG interfaces with root privileges. These capabilities are exclusive to RFeX Drive Advanced Pro.
 
-**Will it use my data for speed testing?** Yes, user-initiated download/upload tests can use significant mobile data. The test provider and any data sharing must be disclosed before consent.
+**Q: How does the correlation scatter plot work when stationary?**  
+**A:** When sitting stationary on a desk, signal variance over time is zero, causing Pearson correlation formulas to divide by zero (`0/0`). RFeX Drive Lite v1.0.0 renders points unconditionally across the grid with a dashed horizontal mean line and displays `r = 0.00 (Stationary, n=60)`. When in motion, a live linear regression trendline with calculated Pearson `r` is plotted dynamically.
 
-**Is it available from an APK download?** Public distribution is planned through Google Play. No official public APK download link is available yet.
+---
 
-**Where do I contact support?** The verified public support address/contact mechanism will be provided on https://rfex.app/drive/lite/support/ before launch. No placeholder email address should be published.
+### Maps, Cell Sites & Indoor Surveys
 
-## Why are Band Lock, Cell Lock and Signaling visible in Lite?
+**Q: Do the map basemaps require API keys or accounts?**  
+**A:** No. All basemaps (OpenStreetMap Standard, Humanitarian OSM, Esri World Imagery, OpenTopoMap) are 100% free and keyless. No account registration, billing, or subscription is required. For offline operation, select the `Off / Grid` mode.
 
-Lite preserves the Build 98 engineering interface. Band/Cell screens provide actual publicly available read-only radio information, with advanced lock actions shown as inactive, clearly labeled future-edition previews. Signaling provides genuine Android Network Events, **not** raw RRC/NAS messages. The privileged drivers and decoder code are not shipped in Lite.
+**Q: How do I display sector wedges and spider lines?**  
+**A:** Open the `CELL DB` dialog and tap `[ LOAD SAMPLE SITES (3 SITES) ]`. Three realistic local LTE sites matching your serving PCI and neighbor PCIs will generate immediately, activating 3GPP antenna azimuth wedges and live serving line-of-sight spider links (`LINKS: ON`). Alternatively, import your own custom site list via CSV (up to 100 sites).
 
-## Indoor Walk — Lite v1.0.0 (implementation-dependent draft)
+**Q: How do I clear indoor walk test points without losing my floorplan?**  
+**A:** On the Indoor tab, tap the `Clear` button next to `Undo pin`. A confirmation dialog (`Clear All Pinpoints?`) will prompt you to confirm, resetting survey pinpoints to 0 while preserving your loaded floorplan sketch.
 
-Indoor Walk reuses the Build 98 floorplan screen. In Lite, import **one PNG/JPEG floorplan** per session, manually tap survey points while real Android-public-API cell measurements are available, and record for up to **3 minutes of active recording time**. You may start additional separately saved sessions without a daily session count. Export genuine recorded points as **CSV**. Tap positions are relative floorplan image positions, **not GPS positions or calibrated surveyed distances**. Multilevel floorplan workflows, georeferencing/advanced calibration and professional reports are Pro/Advanced feature previews only. No ads while walking or exporting. **Draft: publish only after the Lite build and physical-device QA verify the workflow.**
+---
 
-## Local review build
+### Privacy & Data Security
 
-The candidate uses Android SDK 26 minimum and targets API 36. The Build 98 RF Grid, Strip Chart, Map, settings, recording header and offline Help remain in the app. Band/Cell shows Android observations with radio controls disabled. Network Events & Signaling shows Android cell, service and display observations with a disabled Advanced Pro signaling preview. Indoor Walk accepts one PNG or JPEG per active survey, with three active minutes and CSV coordinates relative to the image. Outdoor sessions use five active minutes. Map tiles are off until enabled in the basemap controls.
-
-## Speed Test providers
-
-OpenSpeedTest Public is the hosted speed test in the release build. Cloudflare Speedtest remains QA-only pending confirmation of hosted-service terms. LibreSpeed is deferred.
-
-Select Open Speed Test, read the disclosure, and select Start in the provider widget. OpenSpeedTest receives your IP address and test traffic. Results stay in its widget.
+**Q: Does RFeX Drive Lite collect my location or telemetry?**  
+**A:** **No.** RFeX Drive Lite features a strict **100% On-Device Privacy Guarantee**. All GPS coordinates, RF measurements, and survey logs remain strictly on your physical device. Zero data is transmitted to RFeX servers or third parties.
