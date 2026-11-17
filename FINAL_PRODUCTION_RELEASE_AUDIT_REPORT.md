@@ -35,7 +35,7 @@ RFeX Drive Lite v1.0.0 is now completely finalized, incorporating:
 | **Version Code** | `1` | First public store release |
 | **Minimum SDK** | `26` (Android 8.0 Oreo) | Full legacy API backward compatibility |
 | **Target / Compile SDK**| `36` (Android 16 Vanilla Ice Cream) | Fully compliant with Google Play target API rules |
-| **Source Git Commit** | `90cd93e` | Branch `review/lite-v1.0.0-build98` |
+| **Source Git Commit** | `a0b7bd6` | Branch `review/lite-v1.0.0-build98` |
 | **Physical Test Device**| Xiaomi 13 Pro (`2210132G`) | Snapdragon 8 Gen 2, Android 13 / MIUI 14 |
 | **Live Network** | Viettel 4G LTE (`452/04`) | PCC eNB 500044, Sector 9 / 3, PCI 485, ARFCN 250 / 1700 |
 
@@ -94,15 +94,19 @@ Timestamp_UTC,X_Normalized,Y_Normalized,RAT,PCI,RSRP_dBm,RSRQ_dB,SINR_dB
 | **Onboarding Step 5** | Live granted diagnostic checklist | [screen_step5.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/screen_step5.png) |
 | **Dashboard** | Live Viettel LTE, stabilized SINR (+18 dB), honest MIMO | [screen_dashboard_after_onboarding.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/screen_dashboard_after_onboarding.png) |
 | **Neighbor Cells** | Resolved bands (`B1`, `B3`) and `BAND` column header | [screen_dashboard_scroll1.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/screen_dashboard_scroll1.png) |
-| **Parameters Tab** | Dynamic OS report (`Xiaomi 2210132G (Android 13)`) | [screen_params.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/screen_params.png) |
+| **Parameters Tab** | Dynamic OS report, deduplicated dual-SIM Qualcomm baseband version (`MPSS.DE...`), table weights | [evidence-final-params-clean.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/evidence-final-params-clean.png) |
+| **RF Oscillogram & Correlation** | Stationary scatter plot rendered unconditionally (`r = 0.00, n=60`), dashed mean line | [evidence-final-correlation-live.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/evidence-final-correlation-live.png) |
+| **Map & Cell Database** | 1-Tap `[ LOAD SAMPLE SITES (3 SITES) ]`, 3GPP azimuth wedges & spider links (`LINKS: ON`) | [evidence-final-sample-sites-spider-lines.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/evidence-final-sample-sites-spider-lines.png) |
 | **Street Basemap** | OpenStreetMap vector tiles & live location ring | [screen_map.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/screen_map.png) |
 | **Map Trail Export**| Export dialog -> SAF file destination -> Toast confirmation | [screen_export_dialog.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/screen_export_dialog.png)<br>[screen_map_export_toast.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/screen_map_export_toast.png) |
 | **Indoor Empty State**| Dual prompt: `DRAFT SKETCH` and `IMPORT FILE` | [screen_indoor_tab.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/screen_indoor_tab.png) |
 | **Indoor Sketch Studio**| Blueprint grid, drawing tools, palette, stroke width | [screen_sketch_dialog.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/screen_sketch_dialog.png) |
-| **Indoor Template** | Central corridor & offices template loaded | [screen_sketch_template_loaded.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/screen_sketch_template_loaded.png) |
-| **Indoor Applied** | Draft sketch active as floor plan with blueprint banner | [screen_indoor_applied.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/screen_indoor_applied.png) |
-| **Indoor Walk Test**| 3 live RF pinpoints dropped with route and color dots | [screen_walk_pinned.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/screen_walk_pinned.png) |
+| **Indoor Template** | Central corridor & offices template loaded, clean ASCII title block (zero mojibake) | [evidence-final-blueprint-loaded.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/evidence-final-blueprint-loaded.png) |
+| **Indoor Walk Test**| 3 live RF pinpoints, dashed route, and on-canvas **Indoor RSRP Legend** (`≥-75`, `-85`, `-95`, `<-95`) | [evidence-final-indoor-walk-pins.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/evidence-final-indoor-walk-pins.png) |
+| **Indoor Walk Clear**| `Clear` action with confirmation dialog, cleanly resets points to 0 while preserving floorplan | [evidence-final-indoor-cleared.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/evidence-final-indoor-cleared.png) |
 | **Indoor CSV Export**| SAF file picker & exported CSV (297 bytes) | [screen_walk_export.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/screen_walk_export.png)<br>[evidence-indoor-walk.csv](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/evidence-indoor-walk.csv) |
+| **Saved Sessions Dialog**| Horizontal session badge layout (`20 pts • 1.0 KB`), zero character-wrapping bug | [evidence_saved_sessions.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/evidence_saved_sessions.png) |
+| **Help & Knowledge Center**| Comprehensive 8-category offline manual, 100% on-device privacy guarantee, zero ad text | [evidence-final-help-center.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/evidence-final-help-center.png)<br>[evidence-final-help-privacy.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/evidence-final-help-privacy.png)<br>[evidence-final-help-manual.png](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/evidence-final-help-manual.png) |
 
 ---
 
@@ -113,10 +117,10 @@ All production release artifacts are placed in:
 
 | Artifact File | Size | SHA-256 Checksum | Purpose & Signature Status |
 | :--- | :--- | :--- | :--- |
-| **`RFeX_Drive_Lite_v1.0.0_1_release_signed.aab`** | 8.84 MB | `f35a8518e8d60714b1d68e292262f8f34ce1734805d2f7a69d173dda48adcad3` | **SIGNED & VERIFIED** (Play Store bundle, key: `rfex-release-key`) |
-| **`RFeX_Drive_Lite_v1.0.0_1_release_signed.apk`** | 4.60 MB | `99075d800f755e62dcf26bf436d340393da53e9108fe0baf2d7601a0716bf8ae` | **SIGNED & VERIFIED** (GitHub / Sideload APK, v2+v3 schemes) |
-| **`RFeX_Drive_Lite_v1.0.0_1_release_unsigned.aab`** | 8.84 MB | `2e68a3634435c27ee5a506214d8e155dce66389fe376878878bc2f6a2328c528` | Clean raw unsigned build output from Gradle |
-| **`RFeX_Drive_Lite_v1.0.0_1_release_unsigned.apk`** | 4.59 MB | `bf237322b3616f49d5483f435d7f121c446be8c8aa97151da6bc39cd943edd4c` | Clean raw unsigned build output from Gradle |
+| **`RFeX_Drive_Lite_v1.0.0_1_release_signed.aab`** | 8.84 MB | `7fb4a28c0bc3618f4705157fea691da773e2b2e9545be49ee78e456bd3d296ed` | **SIGNED & VERIFIED** (Play Store bundle, key: `rfex-release-key`) |
+| **`RFeX_Drive_Lite_v1.0.0_1_release_signed.apk`** | 4.60 MB | `7dce308c8d4894bc39bd3c6bdb32d37bab25d5db60ad9f1c417e70ffe9325542` | **SIGNED & VERIFIED** (GitHub / Sideload APK, v2+v3 schemes) |
+| **`RFeX_Drive_Lite_v1.0.0_1_release_unsigned.aab`** | 8.84 MB | `0ce85fb7799ed88f472edffbd28672612f97b415c46c664ac191c2cd26d7df9e` | Clean raw unsigned build output from Gradle |
+| **`RFeX_Drive_Lite_v1.0.0_1_release_unsigned.apk`** | 4.59 MB | `ebdc304b5587f96f22eeafee8394e15a4b80ae12364cfe6e4733e577ae578171` | Clean raw unsigned build output from Gradle |
 | **`SHA256SUMS.txt`** | 5.1 KB | Verified across all release deliverable files | Release integrity verification ledger |
 | **`PRIVACY_POLICY.md`** | 4.7 KB | `96d7103294b64ee0e4a6580caee9c8721600b629e11088eed64a44528258a3af` | Mandatory Google Play Console URL resource |
 | **`GOOGLE_PLAY_DATA_SAFETY.md`**| 3.8 KB | `910cf0abc842cfbe9145d65ecd3a416c9a4cf1230444d0c73d30e404b68e8194` | Questionnaire responses for Play Console form |
