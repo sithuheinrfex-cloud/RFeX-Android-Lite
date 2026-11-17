@@ -111,11 +111,13 @@ Timestamp_UTC,X_Normalized,Y_Normalized,RAT,PCI,RSRP_dBm,RSRQ_dB,SINR_dB
 All production release artifacts are placed in:  
 `D:\RFeX-Research\RFeX-Drive-Lite\Release-Candidate\RFeX_Drive_Lite_v1.0.0\Final-Public-Release\`
 
-| Artifact File | Size | SHA-256 Checksum | Purpose |
+| Artifact File | Size | SHA-256 Checksum | Purpose & Signature Status |
 | :--- | :--- | :--- | :--- |
-| **`RFeX_Drive_Lite_v1.0.0_1_release_unsigned.aab`** | 8.84 MB | `2e68a3634435c27ee5a506214d8e155dce66389fe376878878bc2f6a2328c528` | **Primary Google Play Store submission package** |
-| **`RFeX_Drive_Lite_v1.0.0_1_release_unsigned.apk`** | 4.59 MB | `bf237322b3616f49d5483f435d7f121c446be8c8aa97151da6bc39cd943edd4c` | Direct testing & GitHub Release package |
-| **`SHA256SUMS.txt`** | 4.1 KB | Verified across all 50 release deliverable files | Release integrity verification ledger |
+| **`RFeX_Drive_Lite_v1.0.0_1_release_signed.aab`** | 8.84 MB | `f35a8518e8d60714b1d68e292262f8f34ce1734805d2f7a69d173dda48adcad3` | **SIGNED & VERIFIED** (Play Store bundle, key: `rfex-release-key`) |
+| **`RFeX_Drive_Lite_v1.0.0_1_release_signed.apk`** | 4.60 MB | `99075d800f755e62dcf26bf436d340393da53e9108fe0baf2d7601a0716bf8ae` | **SIGNED & VERIFIED** (GitHub / Sideload APK, v2+v3 schemes) |
+| **`RFeX_Drive_Lite_v1.0.0_1_release_unsigned.aab`** | 8.84 MB | `2e68a3634435c27ee5a506214d8e155dce66389fe376878878bc2f6a2328c528` | Clean raw unsigned build output from Gradle |
+| **`RFeX_Drive_Lite_v1.0.0_1_release_unsigned.apk`** | 4.59 MB | `bf237322b3616f49d5483f435d7f121c446be8c8aa97151da6bc39cd943edd4c` | Clean raw unsigned build output from Gradle |
+| **`SHA256SUMS.txt`** | 5.1 KB | Verified across all release deliverable files | Release integrity verification ledger |
 | **`PRIVACY_POLICY.md`** | 4.7 KB | `96d7103294b64ee0e4a6580caee9c8721600b629e11088eed64a44528258a3af` | Mandatory Google Play Console URL resource |
 | **`GOOGLE_PLAY_DATA_SAFETY.md`**| 3.8 KB | `910cf0abc842cfbe9145d65ecd3a416c9a4cf1230444d0c73d30e404b68e8194` | Questionnaire responses for Play Console form |
 | **`THIRD_PARTY_NOTICES.txt`** | 13.3 KB | `d064a76dd327467b6f3e6123e7c40fafae6f8badc26d09530590918d273024bc` | Open-source license attribution notice |
@@ -124,14 +126,16 @@ All production release artifacts are placed in:
 
 ## 6. Publication Handoff
 
-To publish to Google Play:
-1. **Sign the AAB:** Run `jarsigner` with your upload keystore:
-   ```cmd
-   jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 ^
-     -keystore <path_to_keystore.jks> ^
-     D:\RFeX-Research\RFeX-Drive-Lite\Release-Candidate\RFeX_Drive_Lite_v1.0.0\Final-Public-Release\RFeX_Drive_Lite_v1.0.0_1_release_unsigned.aab ^
-     <key_alias>
-   ```
-2. **Google Play Console:** Upload `RFeX_Drive_Lite_v1.0.0_1_release_unsigned.aab` to the **Production** track.
+Signing has already been completed using your release keystore (`C:\Users\Sithu_Hein\RFeX_DRIVE\keystore\rfex-release.jks` with alias `rfex-release-key`).
+
+### Next Steps for Google Play & GitHub:
+1. **Google Play Console:** Upload `RFeX_Drive_Lite_v1.0.0_1_release_signed.aab` directly to the **Production** track (Release > Create new release).
+2. **GitHub Releases / Sideloading:** Attach `RFeX_Drive_Lite_v1.0.0_1_release_signed.apk` as the public binary asset.
 3. **Data Safety & Privacy:** Use [GOOGLE_PLAY_DATA_SAFETY.md](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/GOOGLE_PLAY_DATA_SAFETY.md) and [PRIVACY_POLICY.md](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/PRIVACY_POLICY.md).
 4. **Release Notes:** Use [RELEASE_NOTES.md](file:///D:/RFeX-Research/RFeX-Drive-Lite/Release-Candidate/RFeX_Drive_Lite_v1.0.0/Final-Public-Release/RELEASE_NOTES.md).
+
+> [!NOTE]
+> If you ever re-sign manually in **Windows PowerShell**, use single quotes without carets (`^`) or angle brackets (`<...>`):
+> ```powershell
+> jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 -keystore 'C:\Users\Sithu_Hein\RFeX_DRIVE\keystore\rfex-release.jks' 'D:\RFeX-Research\RFeX-Drive-Lite\Release-Candidate\RFeX_Drive_Lite_v1.0.0\Final-Public-Release\RFeX_Drive_Lite_v1.0.0_1_release_unsigned.aab' rfex-release-key
+> ```
