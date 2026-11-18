@@ -1,18 +1,6 @@
-RFeX Drive Lite third-party notices
+RFeX Drive Lite — provisional third-party notices collection
 
-Map data and tiles:
-- OpenStreetMap data © OpenStreetMap contributors, licensed under ODbL 1.0: https://www.openstreetmap.org/copyright
-- OpenStreetMap Humanitarian tiles © OpenStreetMap France, licensed under CC BY-SA 2.0: https://www.openstreetmap.fr/
-- World Imagery satellite tiles © Esri, Maxar, Earthstar Geographics, USDA, USGS, AeroGrid, IGN, IGP, and the GIS User Community: https://www.esri.com/legal/terms/fair-use
-- OpenTopoMap tiles © OpenTopoMap (CC-BY-SA), elevation data SRTM: https://opentopomap.org/
-
-Map renderer:
-- osmdroid (Apache-2.0), https://github.com/osmdroid/osmdroid
-
-Android and runtime libraries:
-- AndroidX, Jetpack Compose, Kotlin and coroutines: see component POMs and accompanying license texts below.
-- OkHttp 4.12.0 (Apache-2.0, with Public Suffix List under Mozilla Public License 2.0): https://square.github.io/okhttp/
-- Google Mobile Ads SDK and User Messaging Platform (UMP): Android SDK and Google service terms; https://developers.google.com/admob/terms
+The license texts below are retained pending reconciliation against the exact compiled Lite AAB/APK. Names appearing in this collection do not certify that a corresponding library is bundled. See docs/release/LICENSE_VERIFICATION.md. Preserve all required notices for libraries actually distributed.
 
 License and NOTICE documents present in resolved library archives:
 androidx.webkit:webkit:1.12.1 (META-INF/androidx/webkit/webkit/LICENSE.txt)

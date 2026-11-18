@@ -1,9 +1,7 @@
-# Copyright & Proprietary Notice
+# Copyright
 
-© 2026 RFeX Technology / Sithu Hein. All rights reserved.
+© 2026 RFeX Technology. All rights reserved for first-party RFeX Drive Lite materials.
 
-**RFeX Drive Lite** is proprietary commercial freeware developed and owned by RFeX Technology. 
+The first-party Android source and application are proprietary freeware. Publication of documentation does not grant a source-code license.
 
-The first-party Android source code, user interface designs, architecture, and telemetry algorithms of RFeX Drive Lite are proprietary and closed-source. Unauthorized copying, decompilation, redistribution, or modification of the software binaries or source code without explicit written permission is strictly prohibited.
-
-Third-party software libraries and geographic data included or accessed by RFeX Drive Lite are the property of their respective owners and are licensed under their respective open-source terms. Full attribution and license terms are detailed in [docs/legal/OPEN_SOURCE_LICENSES.md](docs/legal/OPEN_SOURCE_LICENSES.md) and [THIRD_PARTY_NOTICES.txt](THIRD_PARTY_NOTICES.txt).
+Third-party software, maps and service trademarks are owned by their respective rightsholders and retain their original licenses and terms. See [credits](docs/legal/THIRD_PARTY_ATTRIBUTIONS.md), [licenses](docs/legal/OPEN_SOURCE_LICENSES.md) and [notices](THIRD_PARTY_NOTICES.txt). No third-party endorsement is implied.

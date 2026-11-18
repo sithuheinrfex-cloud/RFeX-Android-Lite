@@ -1,34 +1,11 @@
-# Third-Party Attributions & Data Notices
+# Third-Party Acknowledgments
 
-**Product:** RFeX Drive Lite v1.0.0  
-**Effective Date:** November 17, 2026
+Provider names appear here only to satisfy attribution and explain external services; they are **not competitor comparisons**.
 
-RFeX Drive Lite utilizes the following open data sets, mapping tile services, and public specifications:
+- AndroidX, Kotlin and any other actual redistributed runtime libraries: retain relevant copyright notices and licenses.
+- osmdroid contributors: Apache-2.0 (only if osmdroid is actually bundled).
+- © OpenStreetMap contributors: ODbL for map data; public tile host rules are separate.
+- OpenSpeedTest: the external hosted widget must retain visible provider branding and attribution. Its separately distributed source is MIT.
+- Other map/imagery providers must be added only when their use and service terms are verified against the shipped app.
 
----
-
-### 1. OpenStreetMap
-- **Data Provider:** OpenStreetMap Foundation
-- **License:** Open Database License (ODbL) 1.0
-- **Attribution Notice:** "© OpenStreetMap contributors"
-- **Terms:** https://www.openstreetmap.org/copyright
-- **Compliance:** Standard User-Agent HTTP headers (`RFeX-Drive-Lite/1.0.0`), compliant disk tile caching, zero scraping, no tile pre-fetching.
-
-### 2. Humanitarian OpenStreetMap Team (OSM France)
-- **Data Provider:** Humanitarian OpenStreetMap Team / OpenStreetMap France
-- **Attribution Notice:** "Map data © OpenStreetMap contributors, tiles courtesy of Humanitarian OpenStreetMap Team"
-- **Terms:** https://www.hotosm.org/
-
-### 3. Esri World Imagery (Satellite Tiles)
-- **Data Provider:** Environmental Systems Research Institute, Inc. (Esri), Maxar, Earthstar Geographics, and the GIS User Community
-- **Attribution Notice:** "Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community"
-- **Usage:** Standard public REST imagery tiles for engineering route overlay (Zoom 0–19).
-
-### 4. OpenTopoMap
-- **Data Provider:** OpenTopoMap (Kralidis et al.)
-- **Data Sources:** OpenStreetMap data, SRTM elevation data
-- **Attribution Notice:** "Kartendaten: © OpenStreetMap-Mitwirkende, SRTM | Kartendarstellung: © OpenTopoMap (CC-BY-SA)"
-- **License:** Creative Commons Attribution-ShareAlike 3.0 (CC-BY-SA 3.0)
-
-### 5. 3GPP Cellular Specifications
-- Physical Cell ID (PCI), Absolute Radio Frequency Channel Number (ARFCN / EARFCN / NR-ARFCN), Reference Signal Received Power (RSRP), Reference Signal Received Quality (RSRQ), Signal to Interference plus Noise Ratio (SINR), and Timing Advance (TA) nomenclature, ranges, and formulas adhere to 3GPP Technical Specifications (including TS 36.214, TS 38.215, TS 36.101, and TS 38.101).
+The real final dependency and server-host inventory is **not independently verified** by this documentation-only repository. No rightsholder endorsement of RFeX is implied. See [license verification](../release/LICENSE_VERIFICATION.md).
